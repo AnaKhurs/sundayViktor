@@ -145,14 +145,22 @@ const scoresSum = students.reduce((acc, el) => acc + el.scores, 0)
 console.log(scoresSum)
 
 
+
+
 // 14. Д.З.:
 // Напишите функцию addFriends, которая принимает параметром массив students
 // и добавляет в каждому студенту свойство "friends",
 // значением которого является массив имён всех остальных студентов из массива students,
 // за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
 const addFriends = (students) => {
-    //..............................
+    return students.map(student => ({
+        ...student,
+        friends: students
+            .filter(s => s.name !== student.name)
+            .map(s => s.name)
+    }))
 }
+
 console.log(addFriends(students));
 
 
